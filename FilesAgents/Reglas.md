@@ -24,12 +24,26 @@
 - Las pruebas se ubican junto al módulo si así trabaja el candidato. Solo se crea una raíz `pruebas/` si hay pruebas transversales reales.
 - Los scripts repetibles se guardan en `herramientas/` cuando aparezca el primero; no se crea la carpeta vacía.
 
+## Capas y principios SOLID
+
+- La arquitectura limpia se aplica por dirección de dependencias: dominio, aplicación, entrada/salida, infraestructura y composición.
+- El dominio contiene reglas del juego y no conoce Qt Network, Qt Sql, MySQL, archivos de configuración ni detalles de paquetes.
+- La aplicación coordina casos de uso con contratos pequeños que nacen de una necesidad comprobada.
+- Las sesiones y manejadores convierten mensajes del cliente en solicitudes de aplicación; no concentran reglas de negocio nuevas.
+- La infraestructura implementa red, persistencia, criptografía, serialización, compresión, configuración y lectura de datos.
+- `authserver` y `worldserver` son puntos de composición y arranque. No se usan como depósitos de lógica compartida.
+- SOLID guía cada cambio tocado. No obliga a crear una interfaz por clase, fábricas sin variantes ni una jerarquía paralela al código histórico.
+- Una extracción debe nombrar la responsabilidad que separa y tener una prueba o un consumidor real. No se crean carpetas vacías para representar el diagrama.
+- Durante M0 y la primera reproducción se conserva la estructura útil del candidato. Las separaciones se realizan de forma incremental después de establecer una referencia compilable.
+
 ## Backend
 
 - Antes de importar código se registra repositorio, commit, método de incorporación y licencia o bloqueo de licencia.
 - No se anida otro repositorio `.git` dentro de `backend/`.
 - Código nuevo sigue las convenciones del módulo existente.
 - Cada componente debe tener un propósito observable dentro del hito activo.
+- El perfil de reproducción parte de qmake, Qt 5 Core/Network/Sql, MySQL, Protocol Buffers, Crypto++, QuaZip y el compilador compatible que demuestre la primera compilación.
+- Una actualización de toolchain se prueba por separado de los cambios de protocolo o comportamiento.
 
 ## Bases de datos y respaldos
 
