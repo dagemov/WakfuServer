@@ -97,3 +97,12 @@
 - WakSharp: tiene licencia MIT y código real para autenticación, lista y persistencia de personajes con MySQL, pero apunta al cliente 1.28.2, depende de binarios históricos no restaurables desde su proyecto y no implementa la selección de personaje ni la entrada al mapa.
 - Decisión: no importar ninguno ni programar funciones de M1–M5 para aparentar avance. M0 se reabre cuando exista una combinación cliente/build verificable y una base con permiso de uso, o cuando se apruebe explícitamente un alcance nuevo con estimación propia.
 - Razón: el plan exige probar como máximo dos candidatos y declarar el bloqueo si ninguno supera las puertas obligatorias.
+
+## D-013 — Base de datos local de laboratorio
+
+- Fecha: 2026-10-07.
+- Estado: aceptada para M0.
+- Decisión: usar MariaDB 10.4.32 de XAMPP como instancia local compatible con MySQL y el controlador `QMYSQL` observado en WakBox-Evolution.
+- Aislamiento: escucha únicamente en `127.0.0.1:3306`; los datos activos, registros y configuración real viven en `databases/local/` y están excluidos de Git.
+- Reproducción: `PrepararBaseLocal.ps1`, `IniciarBaseLocal.ps1` y `DetenerBaseLocal.ps1` controlan la instancia; `schema/001_create_databases.sql` define las tres bases iniciales.
+- Navicat: el perfil comprobado se llama `WakfuServer local`. Durante M0 usa `root` sin contraseña en loopback; antes de integrar o exponer el backend se creará un usuario propio con una credencial local no versionada.

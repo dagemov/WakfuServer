@@ -1,6 +1,6 @@
 # Estado actual
 
-Actualizado: 2026-10-07T18:06:22-04:00 (`America/New_York`)
+Actualizado: 2026-10-07T20:06:01-04:00 (`America/New_York`)
 
 ## Hito
 
@@ -18,6 +18,8 @@ M0 — Viabilidad y elección. `NO-GO temporal`.
 - El historial público de Steam no expuso un manifiesto de 2017 y la búsqueda local dirigida no encontró una copia histórica.
 - Se evaluó el segundo candidato permitido por M0: WakSharp tiene licencia MIT y persistencia parcial, pero requiere el cliente 1.28.2, dependencias históricas incompletas y carece de selección/entrada al mapa.
 - Ninguna de las dos combinaciones supera las puertas obligatorias; no se importó código ni se programaron funciones de hitos posteriores.
+- Se preparó MariaDB 10.4.32 en `databases/local/`, se aplicaron las bases `wakbox_auth`, `wakbox_char` y `wakbox_world`, y Navicat validó el perfil local con una conexión real.
+- Se abrió la consulta pública [WakBox-Evolution #3](https://github.com/WakBox/WakBox-Evolution/issues/3) para solicitar la identidad verificable del cliente 1.54.0 y la licencia de reutilización del código.
 
 ## Tarea activa
 
@@ -54,7 +56,8 @@ Criterio de cierre: existe en `cliente/instalacion/` una copia autorizada con pr
 - WakBox-Evolution no tiene una licencia general visible en el commit inspeccionado; publicarlo requiere permiso o una base diferente.
 - WakSharp tampoco es viable para el objetivo: no hay cliente 1.28.2 verificable y su recorrido se detiene antes de entrar al mundo.
 - Git conserva permiso de escritura mediante las credenciales de Windows; el token independiente de GitHub CLI está vencido.
+- La instancia MariaDB de M0 usa `root` sin contraseña y escucha solo en loopback. Se reemplazará por un usuario propio con credencial local cuando exista un backend autorizado para integrar.
 
 ## Siguiente acción exacta
 
-Obtener del mantenedor de WakBox-Evolution la identidad exacta del cliente 1.54.0 y el permiso de reutilización, o aportar una copia histórica propia para verificarla. Sin uno de esos insumos no comienza M1 ni la programación del protocolo.
+Revisar la respuesta de [WakBox-Evolution #3](https://github.com/WakBox/WakBox-Evolution/issues/3) y verificar cualquier build, manifiesto, paquete o permiso que aporte el mantenedor. Si aparece una distribución válida, guardarla solo en `cliente/instalacion/` y registrar su procedencia, versión, runtime y SHA-256 antes de abrir M1.
