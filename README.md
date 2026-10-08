@@ -1,15 +1,15 @@
 # WakfuServer
 
-Proyecto de investigación y desarrollo para reproducir un recorrido local y controlado con un cliente histórico de Wakfu: crear un personaje, seleccionarlo, entrar a un mapa y conservarlo después de reiniciar cliente y servidor.
+Proyecto de investigación y desarrollo de `Wakfu-RevolutionEmu`, un emulador propio para reproducir un recorrido local y controlado con un cliente de Wakfu: crear un personaje, seleccionarlo, entrar a un mapa y conservarlo después de reiniciar cliente y servidor.
 
 ## Estado actual
 
-El proyecto está en **M0 — Viabilidad y elección**. WakBox-Evolution y el cliente 1.54.0 son la combinación candidata inicial, todavía sin compilación ni conexión demostradas.
+El proyecto está en **M0 — Especificación, cliente y elección**. WakBox-Evolution es la referencia principal de auditoría y 1.54.0 es el cliente preferido, pero todavía falta una distribución verificable. El producto no tiene aún lenguaje o frameworks fijados.
 
 ## Orden del repositorio
 
 - `FilesAgents/`: plan, estado, reglas, decisiones y evidencia técnica.
-- `backend/`: servidor; aún no se ha incorporado el candidato.
+- `backend/`: código propio del servidor; se inicia después de cerrar las puertas de M0.
 - `databases/`: esquemas, migraciones, datos de prueba y respaldos locales cuando sean necesarios.
 - `cliente/`: definición del laboratorio del cliente. Sus binarios y recursos no se publican.
 

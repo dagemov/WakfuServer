@@ -20,21 +20,21 @@
 - La raíz técnica se divide en `backend/`, `databases/` y `cliente/`.
 - Una subcarpeta se crea cuando existe una responsabilidad y contenido reales.
 - No se imponen capas genéricas como `Core`, `Common`, `Services` o `Infrastructure` sin una necesidad demostrada en el código.
-- Al incorporar WakBox-Evolution se conserva su estructura interna útil y se documentan los cambios; no se ejecuta un renombrado masivo.
-- Las pruebas se ubican junto al módulo si así trabaja el candidato. Solo se crea una raíz `pruebas/` si hay pruebas transversales reales.
+- WakBox-Evolution se estudia como referencia fijada por commit. No entra en `backend/` mientras su licencia no permita reutilización y publicación.
+- El código propio se organiza por responsabilidades comprobadas de `Wakfu-RevolutionEmu`. Solo se crea una raíz `pruebas/` si existen pruebas transversales que no pertenezcan a un módulo.
 - Los scripts repetibles se guardan en `herramientas/` cuando aparezca el primero; no se crea la carpeta vacía.
 
 ## Capas y principios SOLID
 
 - La arquitectura limpia se aplica por dirección de dependencias: dominio, aplicación, entrada/salida, infraestructura y composición.
-- El dominio contiene reglas del juego y no conoce Qt Network, Qt Sql, MySQL, archivos de configuración ni detalles de paquetes.
+- El dominio contiene reglas del juego y no conoce bibliotecas de red, SQL, archivos de configuración ni detalles de paquetes.
 - La aplicación coordina casos de uso con contratos pequeños que nacen de una necesidad comprobada.
 - Las sesiones y manejadores convierten mensajes del cliente en solicitudes de aplicación; no concentran reglas de negocio nuevas.
 - La infraestructura implementa red, persistencia, criptografía, serialización, compresión, configuración y lectura de datos.
-- `authserver` y `worldserver` son puntos de composición y arranque. No se usan como depósitos de lógica compartida.
+- Los procesos de autenticación y mundo son puntos de composición y arranque. No se usan como depósitos de lógica compartida.
 - SOLID guía cada cambio tocado. No obliga a crear una interfaz por clase, fábricas sin variantes ni una jerarquía paralela al código histórico.
 - Una extracción debe nombrar la responsabilidad que separa y tener una prueba o un consumidor real. No se crean carpetas vacías para representar el diagrama.
-- Durante M0 y la primera reproducción se conserva la estructura útil del candidato. Las separaciones se realizan de forma incremental después de establecer una referencia compilable.
+- Durante M0 no se crea arquitectura de producción. Primero se extraen contratos y flujos comprobables; las capas aparecen con el primer recorrido vertical del emulador propio.
 
 ## Backend
 
@@ -42,8 +42,8 @@
 - No se anida otro repositorio `.git` dentro de `backend/`.
 - Código nuevo sigue las convenciones del módulo existente.
 - Cada componente debe tener un propósito observable dentro del hito activo.
-- El perfil de reproducción parte de qmake, Qt 5 Core/Network/Sql, MySQL, Protocol Buffers, Crypto++, QuaZip y el compilador compatible que demuestre la primera compilación.
-- Una actualización de toolchain se prueba por separado de los cambios de protocolo o comportamiento.
+- qmake, Qt, Protocol Buffers, Crypto++, QuaZip y el compilador histórico pertenecen al estudio de WakBox. No determinan el stack de `Wakfu-RevolutionEmu`.
+- El stack propio se elige con una prueba mínima de framing, serialización, MariaDB y pruebas automatizadas. Un cambio de toolchain se prueba por separado de cambios de protocolo o comportamiento.
 
 ## Bases de datos y respaldos
 
@@ -66,7 +66,15 @@
 - Un nombre explica una responsabilidad: `CharacterRepository`, `CreateCharacterHandler` o `CharacterAppearance` cuando esas responsabilidades existan.
 - Se evitan nombres como `Manager2`, `NewSystem`, `FinalFix`, `UltraEngine`, `Misc` y `Utils` sin ámbito.
 - Documentos, mensajes de commit y explicaciones se escriben en español.
-- No se traducen identificadores históricos del candidato solo por preferencia estética.
+- Los documentos de auditoría usan los nombres históricos cuando identifican símbolos de origen. El código propio usa nombres humanos definidos por su responsabilidad y no traduce mecánicamente estructuras externas.
+
+## Investigación y especificación propia
+
+- Cada hallazgo sobre WakBox incluye commit, ruta, símbolo, comportamiento observado, confianza y prueba pendiente.
+- `EstudioWakBox.md` conserva el mapa depurado; `Protocolo.md` conserva contratos y estados. No se copian cuerpos de funciones ni bloques extensos de código externo.
+- La copia de referencia vive sin `.git` bajo `local/referencias/` y queda excluida del repositorio público.
+- Una inferencia obtenida de código estático no se presenta como comportamiento del cliente hasta comprobarla con una ejecución real.
+- Después de 20 horas adicionales sin una distribución verificable de 1.54.0, se cierra la búsqueda histórica y se reestima la ruta del cliente actual congelado.
 
 ## Evidencia y alcance
 

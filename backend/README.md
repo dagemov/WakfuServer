@@ -1,20 +1,19 @@
 # Backend
 
-Esta carpeta alojará el código del servidor seleccionado después de superar las puertas de M0.
+Esta carpeta alojará el código propio de `Wakfu-RevolutionEmu` después de superar las puertas de M0.
 
-Antes de incorporar código se debe registrar:
+Antes de crear código de producción se debe registrar:
 
-- repositorio y commit exactos de origen;
-- licencia o bloqueo de licencia;
-- procedimiento de importación;
-- toolchain y dependencias;
-- componentes que participan en autenticación, selección, creación y mundo.
+- cliente y build objetivo;
+- lenguaje, toolchain, frameworks y dependencias elegidos mediante la prueba técnica de M0;
+- contratos iniciales de red, serialización y persistencia;
+- componentes mínimos que participan en autenticación, selección, creación y mundo.
 
-No se anidará otro directorio `.git`. La estructura interna del candidato se conservará cuando represente responsabilidades reales. No se crearán capas vacías ni se renombrará masivamente el proyecto.
+No se anidará otro directorio `.git`, se copiarán fuentes de referencia ni se crearán capas vacías. Cada carpeta aparecerá con una responsabilidad y un consumidor reales.
 
-## Perfil técnico inicial
+## Referencia técnica de investigación
 
-La reproducción de WakBox-Evolution parte de su combinación observada:
+WakBox-Evolution usa la combinación histórica observada siguiente:
 
 - C++ con proyectos qmake;
 - Qt 5: Core, Network y Sql;
@@ -23,22 +22,22 @@ La reproducción de WakBox-Evolution parte de su combinación observada:
 - Crypto++ 5.6.3;
 - QuaZip, con versión exacta todavía pendiente.
 
-Los rastros de compilación del repositorio mencionan Qt 5.0.2 y Qt 5.8.0 con MinGW de 32 bits. Estas versiones describen el entorno histórico; la combinación instalable se aprobará solo cuando compile y arranque de forma repetible.
+Los rastros de compilación del repositorio mencionan Qt 5.0.2 y Qt 5.8.0 con MinGW de 32 bits. Estas versiones describen la referencia y no determinan el stack del emulador propio.
 
-## Capas que guían los cambios
+## Capas que guiarán el código propio
 
-La arquitectura se aplica sobre responsabilidades reales del candidato:
+La arquitectura se aplicará sobre responsabilidades demostradas por el primer recorrido vertical:
 
-| Capa | Responsabilidad | Ubicación histórica aproximada |
-|---|---|---|
-| Dominio | Personajes, criaturas, objetos y reglas del mundo | `worldserver/Game/Entities` y reglas asociadas |
-| Aplicación | Autenticar, crear, seleccionar y entrar al mundo | coordinación que hoy aparece entre sesiones y manejadores |
-| Entrada y salida | Sesiones, opcodes, paquetes y traducción del protocolo | `authserver`, `worldserver/Game/Handlers` y `Server/Protocol` |
-| Infraestructura | Red, MySQL, configuración, criptografía, Protobuf, QuaZip y datos de mapas | `shared` y lectores concretos de `worldserver/Game/Maps` |
-| Composición | Construcción de dependencias y ciclo de vida de procesos | entradas de `authserver` y `worldserver` |
+| Capa | Responsabilidad |
+|---|---|
+| Dominio | Personajes, criaturas, objetos y reglas del mundo sin dependencias externas. |
+| Aplicación | Casos de uso para autenticar, crear, seleccionar y entrar al mundo. |
+| Entrada y salida | Sesiones, mensajes y traducción del protocolo. |
+| Infraestructura | Red, MariaDB, configuración, serialización, criptografía y datos del juego. |
+| Composición | Construcción de dependencias y ciclo de vida de los procesos. |
 
-La dirección deseada es hacia dominio y aplicación. La tabla no ordena mover archivos de inmediato. Cada recorrido que se modifique separará el mínimo acoplamiento necesario y conservará nombres históricos mientras sigan explicando su responsabilidad.
+La dirección de dependencias será hacia dominio y aplicación. La tabla no ordena crear cinco carpetas vacías; cada separación necesita código, una prueba o un consumidor real.
 
-## Puerta antes de importar
+## Puerta antes de implementar
 
-El commit inspeccionado del candidato es `bacde4702ed871c639ea81f2179f1619beb42c0b`. Su árbol no contiene una licencia general comprobable, por lo que no se copiará al repositorio público hasta obtener permiso de reutilización o seleccionar una base con licencia compatible.
+M0 debe fijar cliente/build, stack y primer contrato de protocolo. El commit de referencia auditado de WakBox-Evolution es `bacde4702ed871c639ea81f2179f1619beb42c0b`; su árbol no contiene una licencia general comprobable, por lo que sus fuentes no entran en esta carpeta sin permiso expreso.

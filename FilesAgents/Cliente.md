@@ -6,10 +6,10 @@
 
 La inspección fue de solo lectura. No se modificaron las instalaciones administradas por Ankama Launcher.
 
-## Objetivo inicial
+## Objetivo preferido
 
-- Versión candidata: 1.54.0.
-- Emulador candidato: WakBox-Evolution.
+- Versión preferida: 1.54.0.
+- Referencia principal: WakBox-Evolution.
 - Sistema: Windows del PC de Sebastián.
 - Ruta autorizada para la copia de laboratorio: `C:\WakfuServer\cliente\instalacion`.
 - Instalación habitual: se mantiene separada y no se modifica.
@@ -53,12 +53,13 @@ Evidencia ejecutada el 7 de octubre de 2026: rutas, archivos, runtime y hashes s
 6. `EVIDENCIA ESTÁTICA`: el commit de WakBox-Evolution `2ee6535fa9af83a7f66bf6eb62af354801015a67`, fechado el 28 de junio de 2017, declara la actualización del servidor a 1.54.0, pero no incluye ni enlaza el cliente.
 7. `EJECUTADO`: el historial público visible de Steam/SteamDB no expone manifiestos de junio de 2017 sin autenticación. Los depósitos visibles corresponden al launcher, archivos actuales o contenido posterior y no identifican 1.54.0.
 8. `EJECUTADO`: no apareció un paquete histórico con nombre Wakfu en Descargas, Escritorio, Documentos ni en las carpetas superficiales de los discos locales. Solo se encontró la raíz actual del proyecto.
+9. `EVIDENCIA ESTÁTICA`: la publicación oficial conservada por Steam confirma que la actualización 1.54 salió el 26 de junio de 2017. La búsqueda actual sigue sin revelar un paquete, build o manifiesto descargable y verificable de esa fecha.
 
-`DATO FALTANTE`: identificador completo de build, manifiesto o paquete del cliente 1.54.0 cuya procedencia se pueda demostrar. Sin ese dato no se puede descargar, verificar ni ejecutar la combinación candidata.
+`DATO FALTANTE`: identificador completo de build, manifiesto o paquete del cliente 1.54.0 cuya procedencia se pueda demostrar. Sin ese dato no se puede descargar, verificar ni ejecutar la ruta preferida.
 
 `PRUEBA DISTINTA SIGUIENTE`: localizar un manifiesto histórico identificado en un depósito oficial/Steam o conseguir del mantenedor la identidad exacta de la distribución. Solo entonces se descargará en `cliente/instalacion/` y se calcularán sus hashes sin usar credenciales oficiales.
 
-## Segundo candidato comprobado
+## Alternativa histórica comprobada
 
 WakSharp declara y valida el cliente 1.28.2. Su licencia MIT permite evaluar el código, pero no se encontró una distribución verificable de ese cliente. Además, la fuente inspeccionada no contiene el recorrido de selección y entrada al mapa. Por ello tampoco forma una combinación viable para continuar a M1.
 

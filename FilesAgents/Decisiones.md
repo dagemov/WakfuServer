@@ -106,3 +106,14 @@
 - Aislamiento: escucha únicamente en `127.0.0.1:3306`; los datos activos, registros y configuración real viven en `databases/local/` y están excluidos de Git.
 - Reproducción: `PrepararBaseLocal.ps1`, `IniciarBaseLocal.ps1` y `DetenerBaseLocal.ps1` controlan la instancia; `schema/001_create_databases.sql` define las tres bases iniciales.
 - Navicat: el perfil comprobado se llama `WakfuServer local`. Durante M0 usa `root` sin contraseña en loopback; antes de integrar o exponer el backend se creará un usuario propio con una credencial local no versionada.
+
+## D-014 — Emulador propio y tres rutas finales
+
+- Fecha: 2026-10-07.
+- Estado: aceptada para el nuevo M0.
+- Producto: el servidor publicable se llamará `Wakfu-RevolutionEmu` y tendrá una implementación propia guiada por especificaciones y pruebas.
+- Referencia: WakBox-Evolution se audita a profundidad con trazabilidad. No se copia a `backend/` ni se traduce mecánicamente mientras no exista una licencia de reutilización comprobable.
+- Ruta preferida: implementar RevolutionEmu para el cliente 1.54.0 si aparece una distribución verificable.
+- Ruta rápida condicionada: modernizar WakBox-Evolution únicamente si se obtienen licencia expresa, cliente verificable y compilación de referencia.
+- Fallback: si la búsqueda limitada de 1.54.0 termina sin resultado, congelar un build actual y reestimar por completo antes de implementar su protocolo.
+- Consecuencia: D-003, D-004, D-008 y D-012 dejan de determinar la base, el lenguaje, el toolchain y el estado del producto nuevo. Sus evidencias históricas siguen vigentes; D-011 continúa bloqueando la incorporación del código de WakBox.
