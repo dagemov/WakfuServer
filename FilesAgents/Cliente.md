@@ -54,10 +54,29 @@ Evidencia ejecutada el 7 de octubre de 2026: rutas, archivos, runtime y hashes s
 7. `EJECUTADO`: el historial público visible de Steam/SteamDB no expone manifiestos de junio de 2017 sin autenticación. Los depósitos visibles corresponden al launcher, archivos actuales o contenido posterior y no identifican 1.54.0.
 8. `EJECUTADO`: no apareció un paquete histórico con nombre Wakfu en Descargas, Escritorio, Documentos ni en las carpetas superficiales de los discos locales. Solo se encontró la raíz actual del proyecto.
 9. `EVIDENCIA ESTÁTICA`: la publicación oficial conservada por Steam confirma que la actualización 1.54 salió el 26 de junio de 2017. La búsqueda actual sigue sin revelar un paquete, build o manifiesto descargable y verificable de esa fecha.
+10. `EJECUTADO`: se descargó desde Uptodown el archivo identificado por esa página como `1.3.0.0` y se inspeccionó sin ejecutarlo. Es un instalador/actualizador NSIS de 2014, no una copia completa del cliente ni evidencia del protocolo 1.3.
 
 `DATO FALTANTE`: identificador completo de build, manifiesto o paquete del cliente 1.54.0 cuya procedencia se pueda demostrar. Sin ese dato no se puede descargar, verificar ni ejecutar la ruta preferida.
 
 `PRUEBA DISTINTA SIGUIENTE`: localizar un manifiesto histórico identificado en un depósito oficial/Steam o conseguir del mantenedor la identidad exacta de la distribución. Solo entonces se descargará en `cliente/instalacion/` y se calcularán sus hashes sin usar credenciales oficiales.
+
+## Instalador de Uptodown 1.3.0.0
+
+La ficha pública [Wakfu 1.3.0.0 para Windows](https://wakfu.en.uptodown.com/windows/download/77695) conserva un ejecutable de Ankama fechado por Uptodown el 12 de septiembre de 2014. La etiqueta `1.3.0.0` corresponde a los metadatos del ejecutable instalador; no demuestra una versión del juego ni un contrato de protocolo.
+
+| Dato | Resultado comprobado |
+|---|---|
+| Archivo local ignorado por Git | `cliente/instalacion/uptodown-1.3.0.0/wakfu-multi-win.exe` |
+| Tamaño | 5.373.208 bytes |
+| SHA-256 | `C87F3CD994B8468E7C1C14B2238A9E30AB93204007ACA19F18D508F3A10751D7` |
+| Firma Authenticode | Válida; `Ankama Games` |
+| Tipo observado | Instalador NSIS de 32 bits con launcher y actualizador |
+| Contenido extraído | 73 archivos, 7.283.194 bytes; Qt 4, `Wakfu.exe`, `transition` y configuraciones de actualización |
+| Cliente Java completo | Ausente: no contiene `core.jar`, bibliotecas Java ni assets del juego |
+| Destino de actualización | `http://dl.ak.ankama.com/updates/uc1`, leído de `game/wakfu.ici` |
+| Disponibilidad del destino | El nombre `dl.ak.ankama.com` no resolvió por HTTP ni HTTPS durante la prueba |
+
+`CONCLUSIÓN`: este archivo no permite comenzar la implementación de `Wakfu-RevolutionEmu`. Sirve como evidencia histórica de cómo el launcher esperaba descargar y arrancar `com.ankamagames.wakfu.client.WakfuClient`, pero falta la distribución real que debía aportar `core.jar`, librerías y datos. No se ejecutó el instalador ni se modificó la instalación habitual.
 
 ## Alternativa histórica comprobada
 

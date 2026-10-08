@@ -1,6 +1,6 @@
 # Estado actual
 
-Actualizado: 2026-10-07T20:21:24-04:00 (`America/New_York`)
+Actualizado: 2026-10-07T20:30:52-04:00 (`America/New_York`)
 
 ## Hito
 
@@ -23,6 +23,8 @@ M0 — Especificación, cliente y elección. `ACTIVO` con alcance replanteado.
 - Se replanteó el objetivo: el producto será `Wakfu-RevolutionEmu`, una implementación propia; WakBox-Evolution pasa a ser referencia auditada y no código base automático.
 - El plan conserva tres rutas finales: modernizar WakBox con licencia y cliente, crear RevolutionEmu para 1.54.0, o usar un build actual congelado. La segunda es la preferida y la tercera es el fallback si termina la búsqueda histórica.
 - La publicación oficial conservada por Steam confirma la salida de 1.54 el 26 de junio de 2017, pero la nueva búsqueda tampoco encontró un paquete o manifiesto verificable.
+- Se descargó e inspeccionó sin ejecutar el archivo que Uptodown etiqueta `1.3.0.0`: su firma de Ankama y su SHA-256 son válidos, pero es un instalador/actualizador NSIS de 2014 de 5.373.208 bytes, no el cliente completo.
+- El instalador solo contiene el launcher `transition`, configuraciones y bibliotecas Qt 4; espera descargar `core.jar`, librerías y datos desde `dl.ak.ankama.com`, nombre que ya no resolvió. Este candidato no habilita M1 ni identifica una versión del protocolo.
 
 ## Tarea activa
 
@@ -53,6 +55,7 @@ Criterio de cierre: `EstudioWakBox.md` identifica módulos, arranque, dependenci
 ## Bloqueos y límites
 
 - Falta el identificador completo de build, manifiesto o paquete del cliente 1.54.0.
+- El ejecutable `1.3.0.0` de Uptodown no sustituye ese dato: la numeración pertenece al instalador y falta la distribución Java que debía descargar.
 - El índice actual del CDN no ofrece historial y las capturas consultadas no conservan la distribución de junio de 2017.
 - El historial público de Steam oculta las entradas antiguas sin autenticación y no se encontró una copia local histórica.
 - WakBox-Evolution no tiene una licencia general visible en el commit inspeccionado; publicarlo requiere permiso o una base diferente.
